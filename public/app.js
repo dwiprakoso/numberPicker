@@ -435,9 +435,6 @@ function updateWinnerCards() {
         winnerCard.style.animationDelay = `${index * 0.2}s`;
         
         winnerCard.innerHTML = `
-            <div class="result-label">
-                <span>🏆</span>
-            </div>
             <div class="winner-name">${winner}</div>
         `;
         

@@ -26,8 +26,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 4rem; /* dari 2rem jadi 4rem atas-bawah */
-        gap: 4rem; /* dari 2rem jadi 4rem */
+        padding: 2.5rem; /* dari 2rem jadi 4rem atas-bawah */
+        gap: 2.5rem; /* dari 2rem jadi 4rem */
         position: relative;
         overflow-x: hidden;
     }
@@ -111,22 +111,25 @@
 
     .winner-cards-container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, 300px); /* Sesuaikan dengan width card */
+        /* atau bisa juga: */
+        /* grid-template-columns: repeat(3, 300px); */
         gap: 1.5rem;
         width: 100%;
-        margin-top: 2rem; /* Dekat dengan header */
-        margin-bottom: 3rem;    
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+        justify-content: center; /* Center the cards */
     }
 
     .winner-card {
-        background-image: url('bg-winner.png');
+        background-image: url('bg-winner-2.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         backdrop-filter: blur(20px);
         border: 3px solid rgba(59, 130, 246, 0.3);
         border-radius: 25px;
-        padding: 2rem;
+        padding: 1rem;
         text-align: center;
         box-shadow: 
             0 20px 80px rgba(0, 0, 0, 0.3),
@@ -137,6 +140,10 @@
         transform: translateY(30px);
         position: relative;
         color: white;
+        
+        /* UKURAN TETAP */
+        width: 300px;           /* Lebar tetap */
+        height: 100px;          /* Tinggi tetap */
     }
 
     .winner-card::before {
@@ -190,9 +197,17 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        
+        /* POSITIONING LEBIH KE KANAN */
+        position: absolute;
+        top: 50%;                    /* Tengah vertikal */
+        left: 70%;                   /* Lebih ke kanan (70% dari kiri) */
+        transform: translate(-50%, -50%);
+        width: 60%;                  /* Lebar lebih sempit */
+        text-align: left;            /* Text align left untuk efek ke kanan */
     }
 
-    .main-result-card {
+   .main-result-card {
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
         backdrop-filter: blur(20px);
         border: 3px solid rgba(59, 130, 246, 0.3);
@@ -205,19 +220,20 @@
             0 0 40px rgba(59, 130, 246, 0.1);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-        margin-top: 0rem; /* Push spinner ke tengah viewport */
-        margin-bottom: 15rem; 
+        margin-top: 0rem;
+        margin-bottom: 15rem;
+        height: 20rem;
+        
+        /* TAMBAHAN UNTUK CENTERING VERTIKAL */
+        display: flex;
+        justify-content: center;    /* Tengah horizontal */
+        align-items: center;        /* Tengah vertikal */
     }
 
     #name-display {
-        font-size: clamp(2rem, 7vw, 3.5rem);
+        font-size: clamp(2.5rem, 8vw, 4rem);    /* Font diperbesar */
         font-weight: 900;
         color: #1e40af;
-        min-height: clamp(80px, 10vh, 120px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
         text-shadow: 
             0 4px 16px rgba(59, 130, 246, 0.3),
             0 2px 8px rgba(0, 0, 0, 0.1);
@@ -228,26 +244,27 @@
     }
 
     #name-display.ready {
-        font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-        color: #64748b;
-        font-weight: 600;
+        font-size: clamp(5rem, 15vw, 10rem);   /* Sangat besar */
+        color: #db2323;
+        font-weight: 800;
     }
 
     #name-display.spinning {
         animation: modernSpin 0.15s ease-in-out infinite;
-        color: #10b981;
+        color: #db2323;
+        font-size: clamp(5rem, 15vw, 10rem);   /* Sangat besar */
     }
 
     @keyframes modernSpin {
         0%, 100% { 
             transform: scale(1) rotate(0deg); 
             opacity: 1; 
-            color: #10b981;
+            color: #db2323;
         }
         50% { 
             transform: scale(1.05) rotate(1deg); 
             opacity: 0.95; 
-            color: #059669;
+            color: #db2323;
         }
     }
 
@@ -601,8 +618,8 @@
 <body>
   <!-- HTML-nya tetap sama seperti tadi -->
   <div class="header">
-      <div class="event-title">SEMARAK BHAYANGKARA KE-79</div>
-      <p class="subtitle">OLAHRAGA BERSAMA • TAHUN 2025</p>
+      <!-- <div class="event-title">SEMARAK BHAYANGKARA KE-79</div> -->
+      <!-- <p class="subtitle">OLAHRAGA BERSAMA • TAHUN 2025</p> -->
   </div>
 
   <div class="results-section">
