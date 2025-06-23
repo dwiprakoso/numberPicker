@@ -549,7 +549,7 @@ function resetGame() {
         availableNames = names.filter(name => !allTimeWinners.includes(name));
         nameDisplay.textContent = `0 0 0 0`;
     } else {
-        nameDisplay.textContent = 'Upload a file to get started';
+        nameDisplay.textContent = '0 0 0 0';
         nameDisplay.className = 'ready';
     }
     
