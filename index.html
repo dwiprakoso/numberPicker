@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doorprize - Semarak Bhayangkara ke-79</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Background image setup */
+            background-image: url('bg-image.png'); /* Ganti dengan path gambar Anda */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            gap: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Overlay untuk membuat background image tidak terlalu terang */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Gradient overlay untuk memperbaiki kontras */
+            background: linear-gradient(
+                135deg,
+                rgba(30, 41, 59, 0.85) 0%,
+                rgba(59, 130, 246, 0.1) 20%,
+                rgba(16, 185, 129, 0.1) 40%,
+                rgba(245, 158, 11, 0.1) 60%,
+                rgba(99, 102, 241, 0.1) 80%,
+                rgba(30, 41, 59, 0.85) 100%
+            );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Pattern overlay yang lebih subtle */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 60% 30%, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 300px 300px, 200px 200px, 250px 250px;
+            animation: subtlePattern 30s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes subtlePattern {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translate(10px, -10px) rotate(90deg); opacity: 0.5; }
+            50% { transform: translate(-5px, 5px) rotate(180deg); opacity: 0.4; }
+            75% { transform: translate(15px, -5px) rotate(270deg); opacity: 0.5; }
+        }
+
+        .header {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .badge-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .police-badge {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 4px solid #1e40af;
+            box-shadow: 
+                0 0 30px rgba(59, 130, 246, 0.4),
+                inset 0 4px 8px rgba(255, 255, 255, 0.3),
+                0 8px 32px rgba(30, 64, 175, 0.3);
+            position: relative;
+            animation: badgeGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes badgeGlow {
+            from { 
+                box-shadow: 
+                    0 0 30px rgba(59, 130, 246, 0.4),
+                    inset 0 4px 8px rgba(255, 255, 255, 0.3),
+                    0 8px 32px rgba(30, 64, 175, 0.3);
+            }
+            to { 
+                box-shadow: 
+                    0 0 50px rgba(59, 130, 246, 0.6),
+                    inset 0 4px 8px rgba(255, 255, 255, 0.5),
+                    0 12px 48px rgba(30, 64, 175, 0.4);
+            }
+        }
+
+        .police-badge::before {
+            content: '⭐';
+            font-size: 3rem;
+            color: #1e40af;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-text {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e40af;
+            color: #dbeafe;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 2px solid #3b82f6;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            text-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(59, 130, 246, 0.4);
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ffffff, #dbeafe, #bfdbfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleShine 2s ease-in-out infinite alternate;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        @keyframes titleShine {
+            from { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5)); }
+        }
+
+        .event-title {
+            color: #ffffff;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.3rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #e2e8f0;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .results-section {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+
+        .winner-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .winner-card {
+            background-image: url('bg-winner.png');
+            background-size: cover; /* biar gambarnya nutup penuh */
+            background-position: center; /* biar gambarnya di tengah */
+            background-repeat: no-repeat; /* supaya gak ngulang */
+            /* tetap pertahankan style lain yang sudah ada */
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 
+                0 20px 80px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(59, 130, 246, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            animation: slideInUp 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            color: white; /* supaya teks jelas kalau background gelap */
+        }
+
+        .winner-card::before {
+            content: '🏆';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #f59e0b, #fbbf24);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #1e40af;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .winner-card .result-label {
+            color: #475569;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .winner-card .winner-name {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 900;
+            color: #1e40af;
+            text-shadow: 
+                0 4px 16px rgba(59, 130, 246, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+            letter-spacing: clamp(1px, 0.3vw, 3px);
+            word-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .main-result-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 
+                0 16px 64px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(59, 130, 246, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .result-label {
+            color: #475569;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        #name-display {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-weight: 900;
+            color: #1e40af;
+            min-height: clamp(80px, 10vh, 120px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-shadow: 
+                0 4px 16px rgba(59, 130, 246, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+            letter-spacing: clamp(1px, 0.3vw, 3px);
+            word-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.2;
+        }
+
+        #name-display.ready {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        #name-display.spinning {
+            animation: modernSpin 0.15s ease-in-out infinite;
+            color: #10b981;
+        }
+
+        @keyframes modernSpin {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                opacity: 1; 
+                color: #10b981;
+            }
+            50% { 
+                transform: scale(1.05) rotate(1deg); 
+                opacity: 0.95; 
+                color: #059669;
+            }
+        }
+
+        .main-result-card.hidden {
+            display: none;
+        }
+
+        .settings-section {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 25px;
+            padding: 2rem;
+            z-index: 10;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .settings-title {
+            color: #1e40af;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .setting-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .setting-label {
+            color: #374151;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .file-input-container {
+            position: relative;
+            width: 100%;
+        }
+
+        #file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 15px;
+            color: #374151;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .file-input-label:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 197, 253, 0.15));
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .file-status {
+            color: #374151;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            font-weight: 600;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(167, 243, 208, 0.1));
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .file-status.show {
+            display: block;
+        }
+
+        .winners-count-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 15px;
+            padding: 16px 20px;
+        }
+
+        .winners-count-label {
+            color: #374151;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: 700;
+            flex: 1;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        #winners-count {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: #1e40af;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: bold;
+            text-align: center;
+            width: 80px;
+            outline: none;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        #winners-count:focus {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.9));
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .controls-section {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        #start-btn, #stop-btn, #reset-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 16px 24px;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            font-weight: 800;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: 2px solid transparent;
+        }
+
+        #start-btn {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #start-btn:enabled:hover {
+            background: linear-gradient(135deg, #059669, #10b981);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #stop-btn {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #stop-btn:enabled:hover {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(239, 68, 68, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #reset-btn {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #reset-btn:enabled:hover {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #start-btn:disabled, #stop-btn:disabled, #reset-btn:disabled {
+            background: rgba(148, 163, 184, 0.5);
+            color: rgba(255, 255, 255, 0.6);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-color: transparent;
+        }
+
+        .keyboard-info {
+            color: #f1f5f9;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(248, 250, 252, 0.1));
+            backdrop-filter: blur(15px);
+            padding: 12px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-info {
+            color: #f1f5f9;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(248, 250, 252, 0.1));
+            backdrop-filter: blur(15px);
+            padding: 12px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .sports-icons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: floatSports 4s ease-in-out infinite;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes floatSports {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+                gap: 1.5rem;
+            }
+
+            .police-badge {
+                width: 80px;
+                height: 80px;
+            }
+
+            .police-badge::before {
+                font-size: 2rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            #start-btn, #stop-btn, #reset-btn {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .winners-count-container {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+
+            .winners-count-label {
+                text-align: center;
+            }
+
+            #winners-count {
+                width: 100px;
+            }
+
+            .winner-cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sports-icons {
+                top: 10px;
+                right: 10px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+                gap: 1rem;
+            }
+            
+            .main-result-card, .settings-section {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .police-badge {
+                width: 70px;
+                height: 70px;
+            }
+
+            .police-badge::before {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            body::before,
+            body::after {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- <div class="badge-container">
+            <div class="police-badge">
+                <div class="badge-text">POLRI</div>
+            </div>
+        </div> -->
+        <div class="event-title">SEMARAK BHAYANGKARA KE-79</div>
+        <!-- <h1>🎁 DOORPRIZE PICKER</h1> -->
+        <p class="subtitle">OLAHRAGA BERSAMA • TAHUN 2025</p>
+    </div>
+
+    <div class="results-section">
+        <div class="winner-cards-container" id="winner-cards-container">
+        </div>
+
+        <div class="main-result-card" id="main-result-card">
+            <div id="name-display" class="ready">Upload file untuk memulai</div>
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <div class="settings-title">
+            <span>⚙️</span>
+            <span>Pengaturan</span>
+        </div>
+        <div class="settings-grid">
+            <div class="setting-item">
+                <div class="setting-label">
+                    <span>📁</span>
+                    <span>Pilih File Data</span>
+                </div>
+                <div class="file-input-container">
+                    <input type="file" id="file-input" accept=".txt,.csv" />
+                    <label for="file-input" class="file-input-label">
+                        <span>📄</span>
+                        <span>Pilih File (.txt atau .csv)</span>
+                    </label>
+                </div>
+                <div class="file-status" id="file-status">
+                    Belum ada file dipilih
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <span>🏆</span>
+                    <span>Jumlah Pemenang</span>
+                </div>
+                <div class="winners-count-container">
+                    <span class="winners-count-label">Jumlah Pemenang:</span>
+                    <input type="number" id="winners-count" min="1" max="50" value="1" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-section">
+        <div class="button-container">
+            <button id="start-btn" disabled>
+                <span>🚀</span>
+                <span>Start</span>
+            </button>
+            <button id="stop-btn" disabled>
+                <span>⏹️</span>
+                <span>Stop</span>
+            </button>
+            <button id="reset-btn" disabled>
+                <span>🔄</span>
+                <span>Reset</span>
+            </button>
+        </div>
+        <div class="keyboard-info">
+            💡 Press <strong>K</strong> to Start • Press <strong>L</strong> to Stop • Press <strong>R</strong> to Reset
+        </div>
+        <div class="status-info" id="status-info">
+            Please upload a file to begin
+        </div>
+    </div>
+
+    <script>
+        let names = [];
+        let availableNames = [];
+        let allTimeWinners = []; // Pemenang permanen
+        let currentRoundWinners = []; // Pemenang putaran saat ini
+        let isSpinning = false;
+        let spinInterval;
+        let fileName = '';
+
+        const fileInput = document.getElementById('file-input');
+        const fileStatus = document.getElementById('file-status');
+        const winnersCount = document.getElementById('winners-count');
+        const nameDisplay = document.getElementById('name-display');
+        const mainResultCard = document.getElementById('main-result-card');
+        const resultLabelText = document.getElementById('result-label-text');
+        const winnerCardsContainer = document.getElementById('winner-cards-container');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const statusInfo = document.getElementById('status-info');
+
+        fileInput.addEventListener('change', handleFileSelect);
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            fileName = file.name;
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const content = e.target.result;
+                names = parseFileContent(content, file.name);
+                
+                if (names.length > 0) {
+                    // Hapus nama yang sudah menang sebelumnya
+                    availableNames = names.filter(name => !allTimeWinners.includes(name));
+                    
+                    fileStatus.textContent = `✅ Loaded ${names.length} names from ${fileName}`;
+                    fileStatus.classList.add('show');
+                    
+                    nameDisplay.textContent = `0 0 0 0`;
+                    // nameDisplay.className = 'ready';
+                    // resultLabelText.textContent = 'Ready to Start';
+                    
+                    statusInfo.textContent = `${availableNames.length} names available • ${allTimeWinners.length} permanently won`;
+                    
+                    startBtn.disabled = availableNames.length === 0;
+                    resetBtn.disabled = false;
+                    
+                    updateWinnersCountMax();
+                    updateDisplay();
+                } else {
+                    fileStatus.textContent = '❌ No valid names found in file';
+                    fileStatus.classList.add('show');
+                    statusInfo.textContent = 'Please upload a valid file with names';
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        function parseFileContent(content, filename) {
+            const lines = content.split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0);
+
+            if (filename.toLowerCase().endsWith('.csv')) {
+                return lines.flatMap(line => {
+                    const values = line.split(',').map(val => val.trim().replace(/"/g, ''));
+                    return values.filter(val => val.length > 0);
+                });
+            } else {
+                return lines;
+            }
+        }
+
+        function updateWinnersCountMax() {
+            winnersCount.max = Math.min(availableNames.length, 50);
+            if (parseInt(winnersCount.value) > availableNames.length) {
+                winnersCount.value = availableNames.length;
+            }
+        }
+
+        function updateDisplay() {
+            if (currentRoundWinners.length > 0) {
+                mainResultCard.classList.add('hidden');
+                updateWinnerCards();
+            } else {
+                mainResultCard.classList.remove('hidden');
+                winnerCardsContainer.innerHTML = '';
+            }
+        }
+
+        function updateWinnerCards() {
+            winnerCardsContainer.innerHTML = '';
+            
+            currentRoundWinners.forEach((winner, index) => {
+                const winnerCard = document.createElement('div');
+                winnerCard.className = 'winner-card';
+                winnerCard.style.animationDelay = `${index * 0.2}s`;
+                
+                winnerCard.innerHTML = `
+                    <div class="result-label">
+                        <span>🏆</span>
+                        <span>Pemenang #${index + 1}</span>
+                    </div>
+                    <div class="winner-name">${winner}</div>
+                `;
+                
+                winnerCardsContainer.appendChild(winnerCard);
+            });
+        }
+
+        function startSpinning() {
+            if (availableNames.length === 0) {
+                statusInfo.textContent = 'No more names available!';
+                return;
+            }
+
+            const targetWinners = parseInt(winnersCount.value);
+            if (targetWinners > availableNames.length) {
+                statusInfo.textContent = 'Not enough names for the requested winners!';
+                return;
+            }
+
+            isSpinning = true;
+            currentRoundWinners = [];
+            
+            mainResultCard.classList.remove('hidden');
+            winnerCardsContainer.innerHTML = '';
+            nameDisplay.className = 'spinning';
+            // resultLabelText.textContent = `Picking ${targetWinners} Winner(s)...`;
+            
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            resetBtn.disabled = true;
+
+            spinInterval = setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * availableNames.length);
+                nameDisplay.textContent = availableNames[randomIndex];
+            }, 50);
+
+            statusInfo.textContent = `Spinning for ${targetWinners} winner(s)... Press Stop to pick!`;
+        }
+
+        function stopSpinning() {
+            if (!isSpinning) return;
+
+            clearInterval(spinInterval);
+            isSpinning = false;
+
+            const targetWinners = parseInt(winnersCount.value);
+            
+            // Pilih semua pemenang sekaligus
+            const shuffled = [...availableNames].sort(() => 0.5 - Math.random());
+            currentRoundWinners = shuffled.slice(0, targetWinners);
+            
+            // Tambahkan ke daftar pemenang permanen
+            allTimeWinners.push(...currentRoundWinners);
+            
+            // Hapus dari nama yang tersedia
+            currentRoundWinners.forEach(winner => {
+                const index = availableNames.indexOf(winner);
+                if (index > -1) {
+                    availableNames.splice(index, 1);
+                }
+            });
+
+            // Tampilkan hasil
+            nameDisplay.textContent = `${currentRoundWinners.length} Winners Selected!`;
+            nameDisplay.className = 'winner';
+            // resultLabelText.textContent = 'Results';
+
+            // Langsung update tanpa delay
+            updateDisplay();
+            updateStatus();
+
+            startBtn.disabled = availableNames.length === 0;
+            stopBtn.disabled = true;
+            resetBtn.disabled = false;
+        }
+
+        function updateStatus() {
+            if (currentRoundWinners.length > 0) {
+                statusInfo.textContent = `🎉 ${currentRoundWinners.length} winner(s) selected! • ${availableNames.length} names remaining • ${allTimeWinners.length} total won`;
+            } else if (availableNames.length > 0) {
+                statusInfo.textContent = `${availableNames.length} names available • ${allTimeWinners.length} permanently won • Ready to pick!`;
+            } else {
+                statusInfo.textContent = `All names have been selected as winners! • ${allTimeWinners.length} total winners`;
+            }
+        }
+
+        function resetGame() {
+            clearInterval(spinInterval);
+            isSpinning = false;
+            currentRoundWinners = [];
+            // allTimeWinners tetap tidak direset
+
+            if (names.length > 0) {
+                availableNames = names.filter(name => !allTimeWinners.includes(name));
+                nameDisplay.textContent = `0 0 0 0`;
+                // nameDisplay.className = 'ready';
+                // resultLabelText.textContent = 'Ready to Start';
+            } else {
+                nameDisplay.textContent = 'Upload a file to get started';
+                nameDisplay.className = 'ready';
+                // resultLabelText.textContent = 'Current Selection';
+            }
+            
+            updateDisplay();
+            updateWinnersCountMax();
+
+            startBtn.disabled = availableNames.length === 0 || names.length === 0;
+            stopBtn.disabled = true;
+            resetBtn.disabled = names.length === 0;
+
+            updateStatus();
+        }
+
+        startBtn.addEventListener('click', startSpinning);
+        stopBtn.addEventListener('click', stopSpinning);
+        resetBtn.addEventListener('click', resetGame);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName.toLowerCase() === 'input') return;
+            
+            switch(e.key.toLowerCase()) {
+                case 'k':
+                    e.preventDefault();
+                    if (!startBtn.disabled) startSpinning();
+                    break;
+                case 'l':
+                    e.preventDefault();
+                    if (!stopBtn.disabled) stopSpinning();
+                    break;
+                case 'r':
+                    e.preventDefault();
+                    if (!resetBtn.disabled) resetGame();
+                    break;
+            }
+        });
+
+        winnersCount.addEventListener('change', () => {
+            const value = parseInt(winnersCount.value);
+            const maxValue = Math.min(availableNames.length, 50);
+            
+            if (value > maxValue) {
+                winnersCount.value = maxValue;
+            } else if (value < 1) {
+                winnersCount.value = 1;
+            }
+            
+            updateStatus();
+        });
+
+        resetGame();
+    </script>
+</body>
+</html>
