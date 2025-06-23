@@ -375,7 +375,7 @@ function handleFileSelect(event) {
             fileStatus.textContent = `✅ Loaded ${names.length} names from ${fileName}`;
             fileStatus.classList.add('show');
             
-            nameDisplay.textContent = `Ready to spin!`;
+            nameDisplay.textContent = `0 0 0 0`;
             
             statusInfo.textContent = `${availableNames.length} names available • ${allTimeWinners.length} permanently won`;
             
@@ -437,7 +437,6 @@ function updateWinnerCards() {
         winnerCard.innerHTML = `
             <div class="result-label">
                 <span>🏆</span>
-                <span>Pemenang #${index + 1}</span>
             </div>
             <div class="winner-name">${winner}</div>
         `;
@@ -551,7 +550,7 @@ function resetGame() {
 
     if (names.length > 0) {
         availableNames = names.filter(name => !allTimeWinners.includes(name));
-        nameDisplay.textContent = `Ready to spin!`;
+        nameDisplay.textContent = `0 0 0 0`;
     } else {
         nameDisplay.textContent = 'Upload a file to get started';
         nameDisplay.className = 'ready';
