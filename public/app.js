@@ -375,7 +375,7 @@ function handleFileSelect(event) {
             fileStatus.textContent = `✅ Loaded ${names.length} names from ${fileName}`;
             fileStatus.classList.add('show');
             
-            nameDisplay.textContent = `0 0 0 0`;
+            nameDisplay.textContent = `S T A R T`;
             
             statusInfo.textContent = `${availableNames.length} names available • ${allTimeWinners.length} permanently won`;
             
@@ -547,9 +547,9 @@ function resetGame() {
 
     if (names.length > 0) {
         availableNames = names.filter(name => !allTimeWinners.includes(name));
-        nameDisplay.textContent = `0 0 0 0`;
+        nameDisplay.textContent = `S T A R T`;
     } else {
-        nameDisplay.textContent = '0 0 0 0';
+        nameDisplay.textContent = 'S T A R T';
         nameDisplay.className = 'ready';
     }
     

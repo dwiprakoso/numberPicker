@@ -120,7 +120,8 @@
 }
 
     .winner-card {
-        background-image: url('bg-winner-2.png');
+        /* background-image: url('bg-winner-2.png'); */
+        background-color: rgba(255, 255, 255, 0.827);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -199,7 +200,7 @@
         /* POSITIONING LEBIH KE KANAN */
         position: absolute;
         top: 50%;                    /* Tengah vertikal */
-        left: 70%;                   /* Lebih ke kanan (70% dari kiri) */
+        left: 57%;                   /* Lebih ke kanan (70% dari kiri) */
         transform: translate(-50%, -50%);
         width: 60%;                  /* Lebar lebih sempit */
         text-align: left;            /* Text align left untuk efek ke kanan */
@@ -231,7 +232,7 @@
     #name-display {
         font-size: clamp(5rem, 15vw, 10rem);   /* Sangat besar */
         font-weight: 900;
-        color: #db2323;
+        color: #1e40af;
         text-shadow: 
             0 4px 16px rgba(59, 130, 246, 0.3),
             0 2px 8px rgba(0, 0, 0, 0.1);
@@ -243,13 +244,13 @@
 
     #name-display.ready {
         font-size: clamp(5rem, 15vw, 10rem);   /* Sangat besar */
-        color: #db2323;
+        color: #1e40af;
         font-weight: 800;
     }
 
     #name-display.spinning {
         animation: modernSpin 0.15s ease-in-out infinite;
-        color: #db2323;
+        color: #1e40af;
         font-size: clamp(5rem, 15vw, 10rem);   /* Sangat besar */
     }
 
@@ -257,12 +258,12 @@
         0%, 100% { 
             transform: scale(1) rotate(0deg); 
             opacity: 1; 
-            color: #db2323;
+            color: #1e40af;
         }
         50% { 
             transform: scale(1.05) rotate(1deg); 
             opacity: 0.95; 
-            color: #db2323;
+            color: #1e40af;
         }
     }
 
